@@ -1,17 +1,17 @@
 from enum import Enum
 from dataclasses import dataclass
 import openai
-from src.moderation import moderate_message
+from moderation import moderate_message
 from typing import Optional, List
-from src.constants import (
+from constants import (
     BOT_INSTRUCTIONS,
     BOT_NAME,
     EXAMPLE_CONVOS,
 )
 import discord
-from src.base import Message, Prompt, Conversation
-from src.utils import split_into_shorter_messages, close_thread, logger
-from src.moderation import (
+from base import Message, Prompt, Conversation
+from utils import split_into_shorter_messages, close_thread, logger
+from moderation import (
     send_moderation_flagged_message,
     send_moderation_blocked_message,
 )

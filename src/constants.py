@@ -3,7 +3,7 @@ import os
 import dacite
 import yaml
 from typing import Dict, List
-from src.base import Config
+from base import Config
 
 load_dotenv()
 

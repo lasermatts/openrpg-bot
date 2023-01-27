@@ -1,8 +1,8 @@
 import discord
 from discord import Message as DiscordMessage
 import logging
-from src.base import Message, Conversation
-from src.constants import (
+from base import Message, Conversation
+from constants import (
     BOT_INVITE_URL,
     DISCORD_BOT_TOKEN,
     EXAMPLE_CONVOS,
@@ -11,16 +11,16 @@ from src.constants import (
     SECONDS_DELAY_RECEIVING_MSG,
 )
 import asyncio
-from src.utils import (
+from utils import (
     logger,
     should_block,
     close_thread,
     is_last_message_stale,
     discord_message_to_message,
 )
-from src import completion
-from src.completion import generate_completion_response, process_response
-from src.moderation import (
+import completion
+from completion import generate_completion_response, process_response
+from moderation import (
     moderate_message,
     send_moderation_blocked_message,
     send_moderation_flagged_message,
