@@ -53,7 +53,7 @@ async def generate_completion_response(
             prompt=rendered,
             temperature=1.0,
             top_p=0.9,
-            max_tokens=512,
+            max_tokens=712,
             stop=["<|endoftext|>"],
         )
         reply = response.choices[0].text.strip()
