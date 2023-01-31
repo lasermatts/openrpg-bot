@@ -55,7 +55,7 @@ async def on_ready():
 
 
 # /chat message:
-@tree.command(name="chat", description="Create a new thread for conversation")
+@tree.command(name="hey", description="Start a new ideas thread")
 @discord.app_commands.checks.has_permissions(send_messages=True)
 @discord.app_commands.checks.has_permissions(view_channel=True)
 @discord.app_commands.checks.bot_has_permissions(send_messages=True)
@@ -91,8 +91,8 @@ async def chat_command(int: discord.Interaction, message: str):
                 return
 
             embed = discord.Embed(
-                description=f"<@{user.id}> wants to chat! 🤖💬",
-                color=discord.Color.green(),
+                description=f"beep boop <@{user.id}> let's chat! 🤖💬",
+                color=discord.Color.from_rgb(255, 200, 0),
             )
             embed.add_field(name=user.name, value=message)
 
