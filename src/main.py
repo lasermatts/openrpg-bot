@@ -1,8 +1,8 @@
 import discord
 from discord import Message as DiscordMessage
 import logging
-from src.base import Message, Conversation
-from src.constants import (
+from base import Message, Conversation
+from constants import (
     BOT_INVITE_URL,
     DISCORD_BOT_TOKEN,
     EXAMPLE_CONVOS,
@@ -11,16 +11,16 @@ from src.constants import (
     SECONDS_DELAY_RECEIVING_MSG,
 )
 import asyncio
-from src.utils import (
+from utils import (
     logger,
     should_block,
     close_thread,
     is_last_message_stale,
     discord_message_to_message,
 )
-from src import completion
-from src.completion import generate_completion_response, process_response
-from src.moderation import (
+import completion
+from completion import generate_completion_response, process_response
+from moderation import (
     moderate_message,
     send_moderation_blocked_message,
     send_moderation_flagged_message,
@@ -51,10 +51,11 @@ async def on_ready():
                 messages.append(m)
         completion.MY_BOT_EXAMPLE_CONVOS.append(Conversation(messages=messages))
     await tree.sync()
+# the WorldBuilder bot's name is Tarn
 
 
 # /chat message:
-@tree.command(name="chat", description="Create a new thread for conversation")
+@tree.command(name="hey", description="Start a new ideas thread")
 @discord.app_commands.checks.has_permissions(send_messages=True)
 @discord.app_commands.checks.has_permissions(view_channel=True)
 @discord.app_commands.checks.bot_has_permissions(send_messages=True)
@@ -90,8 +91,8 @@ async def chat_command(int: discord.Interaction, message: str):
                 return
 
             embed = discord.Embed(
-                description=f"<@{user.id}> wants to chat! 🤖💬",
-                color=discord.Color.green(),
+                description=f"beep boop <@{user.id}> let's chat! 🤖💬",
+                color=discord.Color.from_rgb(255, 200, 0),
             )
             embed.add_field(name=user.name, value=message)
 

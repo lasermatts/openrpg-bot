@@ -3,7 +3,7 @@ import os
 import dacite
 import yaml
 from typing import Dict, List
-from src.base import Config
+from base import Config
 
 load_dotenv()
 
@@ -14,6 +14,8 @@ CONFIG: Config = dacite.from_dict(
     Config, yaml.safe_load(open(os.path.join(SCRIPT_DIR, "config.yaml"), "r"))
 )
 
+#ok, so I'm going to have to figure out how to dynamically change the config that gets booted in
+# also, the WorldBuilder bot's name is Tarn
 BOT_NAME = CONFIG.name
 BOT_INSTRUCTIONS = CONFIG.instructions
 EXAMPLE_CONVOS = CONFIG.example_conversations
@@ -60,7 +62,7 @@ SECONDS_DELAY_RECEIVING_MSG = (
     3  # give a delay for the bot to respond so it can catch multiple messages
 )
 MAX_THREAD_MESSAGES = 200
-ACTIVATE_THREAD_PREFX = "💬✅"
+ACTIVATE_THREAD_PREFX = "🤠/🤖"
 INACTIVATE_THREAD_PREFIX = "💬❌"
 MAX_CHARS_PER_REPLY_MSG = (
     1500  # discord has a 2k limit, we just break message into 1.5k
